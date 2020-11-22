@@ -6,8 +6,16 @@ public class ContaBanco {
 	public int numConta;
 	protected String tipo;
 	private String dono;
-	private double saldo;
+	private float saldo;
 	private boolean status;
+	
+	void status() {
+		System.out.println("Conta: " + this.numConta);
+		System.out.println("Tipo de conta: " + this.tipo);
+		System.out.println("Usuário: " + this.dono);
+		System.out.println("Saldo: " + this.saldo);
+		System.out.println("Status da conta: " + this.status);
+	}
 
 	// getters e setters
 	public int getNumConta() {
@@ -38,8 +46,8 @@ public class ContaBanco {
 		return saldo;
 	}
 
-	public void setSaldo(double s) {
-		this.saldo = s;
+	public void setSaldo(double d) {
+		this.saldo = (float) d;
 	}
 
 	public boolean isStatus() {
@@ -55,14 +63,20 @@ public class ContaBanco {
 		setSaldo(0);
 		setStatus(false);
 	}
+	
 
-	public ContaBanco(int numConta, String tipo, String dono, double saldo, boolean status) {
+	public ContaBanco() {
+		super();
+	}
+
+	public ContaBanco(int numConta, String tipo, String dono, float saldo, boolean status) {
 		super();
 		this.numConta = numConta;
 		this.tipo = tipo;
 		this.dono = dono;
 		this.saldo = saldo;
 		this.status = status;
+
 	}
 
 	// métodos específicos (primeiro fazer depois dos outros método)
@@ -70,9 +84,9 @@ public class ContaBanco {
 		setTipo(t);
 		setStatus(true);
 		if (t == "cc") {
-			this.saldo = saldo + 50;
+			this.saldo =  50;
 		} else if (t == "cp") {
-			this.saldo = saldo + 150;
+			this.saldo =  150;
 		}
 	}
 
@@ -87,9 +101,9 @@ public class ContaBanco {
 		}
 	}
 
-	public void depositar(double v) {
+	public void depositar(float v) {
 		if (status == true) {
-			setSaldo(getSaldo() + v);
+
 			this.setSaldo(this.getSaldo() + v);
 			System.out.println("depósito realizado com sucesso");
 		} else {
