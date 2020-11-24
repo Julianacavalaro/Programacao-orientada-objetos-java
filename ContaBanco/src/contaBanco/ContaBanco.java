@@ -91,7 +91,7 @@ public class ContaBanco {
 	}
 
 	public void fecharConta() {
-		if (this.getSaldo() > 0) {
+		if (this.saldo> 0) {
 			System.out.println("impossível fechar conta com dinheiro");
 		} else if (this.getSaldo() < 0) {
 			System.out.println("impossível fechar com débito");
@@ -113,11 +113,11 @@ public class ContaBanco {
 
 	public void sacar(double v) {
 		if (status == true) {
-			if (this.saldo > 0) {
+			if ((this.saldo - v) >= 0) {
 				setSaldo(getSaldo()- v);
-				
+				System.out.println("Saque de "+ v +" \nNovo saldo: "+saldo);
 			} else {
-				System.out.println("Não é possível sacar com saldo menor que zero");
+				System.out.println("Não é possível sacar, saldo insuficiente");
 			}
 		}else {
 			System.out.println("Impossível sacar com a conta inativa");
